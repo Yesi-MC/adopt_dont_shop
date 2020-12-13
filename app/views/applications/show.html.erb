@@ -1,0 +1,6 @@
+<h1>Applicant Name: <%= @application.name%></h1>
+
+<p>Address: <%= @application.address %> <%= @application.city %> <%= @application.state %> <%= @application.zip %></p>
+<p>Description: <%= @application.description %></p>
+<p>Application Status: <%= @application.application_status%></p>
+<p>Applications for: <%= link_to "#{@application.pets.name}", "/pets/#{@application.pet_ids}"%></p>
