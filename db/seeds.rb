@@ -86,7 +86,7 @@ Application.destroy_all
         state: "Colorado", 
         zip: 80219, 
         description: "big yard, loving home", 
-        plication_status: "Pending"
+        application_status: "Pending"
         )
 
   application2 = Application.create!(
