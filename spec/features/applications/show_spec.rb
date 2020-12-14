@@ -50,6 +50,14 @@ RSpec.describe "as a visitor", type: :feature do
         shelter_id: shelter1.id
         )
 
+      PetApplication.create!(
+            pet_id: pet1.id,
+            application_id: application1.id
+      )
+      PetApplication.create!(
+            pet_id: pet2.id,
+            application_id: application1.id
+      )
   visit "/applications/#{application1.id}"
 
   expect(page).to have_content(application1.name)
