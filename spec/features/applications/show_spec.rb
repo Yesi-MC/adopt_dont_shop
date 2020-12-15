@@ -182,7 +182,7 @@ RSpec.describe "as a visitor", type: :feature do
 
       fill_in "Pet Search", with: "Nena"
       click_button "Submit"
-
+   
       click_button "Adopt this Pet"
       expect(current_path).to eq("/applications/#{application1.id}")
       expect(page).to have_content(pet3.name)
