@@ -7,3 +7,16 @@
  <p>Applications for:<% @application.pets.each do |pet| %>
  <%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
  <% end %></p>
+
+
+<%= form_tag "/applications/#{@application.id}", method: :get do %>
+  <%= label_tag "Pet Search" %>
+  <%= text_field_tag "Pet Search"%> 
+
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+   <%  if @pet != nil %>
+    <%=  @pet.name  %>
+    <% else %>
+    <% end %>
