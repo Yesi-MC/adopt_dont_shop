@@ -20,7 +20,7 @@ Application.destroy_all
 
 
   pet1 = Pet.create!(
-        image: "string",
+        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
         name:"Spot",
         approximate_age: 5, 
         description: "Rotweiler", 
@@ -30,7 +30,7 @@ Application.destroy_all
         )
 
   pet2 = Pet.create!(
-        image:"string", 
+        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg", 
         name: "Buddy", 
         approximate_age: 8, 
         description: "Golden Retriever", 
@@ -40,7 +40,7 @@ Application.destroy_all
         )
 
   pet2 = Pet.create!(
-        image: "string", 
+        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
         name: "Courage", 
         approximate_age: 9,
         description: "Pink Beagle", 
@@ -50,7 +50,7 @@ Application.destroy_all
         )
 
   pet3 = Pet.create!(
-        image: "string", 
+        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
         name: "Appa", 
         approximate_age: 3,
         description: "Poodle", 
@@ -60,7 +60,7 @@ Application.destroy_all
         )
 
   pet4 = Pet.create!(
-        image: "string", 
+        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
         name: "Momo", 
         approximate_age: 2,
         description: "Corgi", 
@@ -70,7 +70,7 @@ Application.destroy_all
         )
 
   pet5 = Pet.create!(
-        image: "string", 
+        image: "https://media.angieslist.com/s3fs-public/styles/widescreen_large/public/parakeet.jpeg?itok=2pMpm55J",
         name: "Scooby", 
         approximate_age: 6,
         description: "Great Dane", 
