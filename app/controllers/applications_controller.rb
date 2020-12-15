@@ -5,6 +5,11 @@ class ApplicationsController < ApplicationController
 
   def show 
     @application = Application.find(params[:id])
+    if params["Pet Search"]
+      @pet = Pet.find_by(name: params["Pet Search"])
+    else
+      @pet = nil
+    end
   end
 
   def create 
@@ -23,4 +28,4 @@ class ApplicationsController < ApplicationController
       render :new
     end 
   end
-endgit 
+end
