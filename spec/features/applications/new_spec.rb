@@ -15,9 +15,23 @@ RSpec.describe "As a visitor" do
       # fill_in "Application Status", with: "In Progress"
 
       click_button "Submit"
-      save_and_open_page
-
+  
       expect(page).to have_content("Yesi")
+    end
+    it "If I leave a field empty it doesnt let me submit" do 
+
+      visit "/applications/new"
+
+      fill_in "Name", with: "Yesi"
+      fill_in "Address", with: ""
+      fill_in "City", with: "Denver"
+      fill_in "State", with: "Colorado"
+      fill_in "Zip", with: "80204"
+      fill_in "Description", with: "I love pets"
+
+      click_button "Submit"
+   
+      expect(page).to have_content("Please fill in all fields")
     end
   end 
 end

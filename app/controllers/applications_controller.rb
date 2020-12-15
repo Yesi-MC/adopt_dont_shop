@@ -5,6 +5,11 @@ class ApplicationsController < ApplicationController
 
   def show 
     @application = Application.find(params[:id])
+    if params["Pet Search"]
+      @pet = Pet.find_by(name: params["Pet Search"])
+    else
+      @pet = nil
+    end
   end
 
   def create 
@@ -16,9 +21,11 @@ class ApplicationsController < ApplicationController
     zip: params[:zip],
     description: params[:description]
     })
-    application.save
-    # require 'pry'; binding.pry
-
-    redirect_to "/applications/#{application.id}"
+    if application.save
+      redirect_to "/applications/#{application.id}"
+    else 
+      flash[:notice] = "Please fill in all fields"
+      render :new
+    end 
   end
 end
