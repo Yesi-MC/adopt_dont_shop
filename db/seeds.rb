@@ -143,5 +143,5 @@ Application.destroy_all
         application_id: application1.id,
         pet_id: pet1.id
         )
-
+      
 

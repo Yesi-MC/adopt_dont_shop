@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  validates_presence_of :image, :name, :description, :approximate_age, :sex
+  validates_presence_of :name, :description, :approximate_age, :sex
   belongs_to :shelter
   has_many :pet_applications
   has_many :applications, through: :pet_applications

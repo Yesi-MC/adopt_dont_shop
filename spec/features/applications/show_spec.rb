@@ -3,52 +3,52 @@ require 'rails_helper'
 RSpec.describe "as a visitor", type: :feature do 
   describe "when I visit a application show page" do 
     it "can see applications attributes" do 
-  application1 = Application.create!(
-        name: "Steve", 
-        address: "5280 denver st",
-        city: "Denver", 
-        state: "Colorado", 
-        zip: 80219, 
-        description: "big yard, loving home", 
-        application_status: "Pending"
-        )
-  application2 = Application.create!(
-        name: "Korra", 
-        address: "246 Drury Lane", 
-        city: "Far Way", 
-        state: "Wyoming", 
-        zip: 80299, 
-        description: "looking for a new dog",
-        application_status: "Accepted"
-        )
+      application1 = Application.create!(
+            name: "Steve", 
+            address: "5280 denver st",
+            city: "Denver", 
+            state: "Colorado", 
+            zip: 80219, 
+            description: "big yard, loving home", 
+            application_status: "In Progress"
+            )
+      application2 = Application.create!(
+            name: "Korra", 
+            address: "246 Drury Lane", 
+            city: "Far Way", 
+            state: "Wyoming", 
+            zip: 80299, 
+            description: "looking for a new dog",
+            application_status: "Accepted"
+            )
 
-  shelter1 = Shelter.create!( 
-        name: "Adopt a paw", 
-        address: "123 Paw Ave",
-        city: "Denver",
-        state: "Colorado",
-        zip: 80219 
-        )
+      shelter1 = Shelter.create!( 
+            name: "Adopt a paw", 
+            address: "123 Paw Ave",
+            city: "Denver",
+            state: "Colorado",
+            zip: 80219 
+            )
 
-  pet1 = Pet.create!(
-        image: "string",
-        name:"Spot",
-        approximate_age: 5, 
-        description: "Rotweiler", 
-        adoptable: true, 
-        sex: :female,
-        shelter_id: shelter1.id
-        )
+      pet1 = Pet.create!(
+            image: "string",
+            name:"Spot",
+            approximate_age: 5, 
+            description: "Rotweiler", 
+            adoptable: true, 
+            sex: :female,
+            shelter_id: shelter1.id
+            )
 
-  pet2 = Pet.create!(
-        image:"string", 
-        name: "Buddy", 
-        approximate_age: 8, 
-        description: "Golden Retriever", 
-        adoptable: true, 
-        sex: :male,
-        shelter_id: shelter1.id
-        )
+      pet2 = Pet.create!(
+            image:"string", 
+            name: "Buddy", 
+            approximate_age: 8, 
+            description: "Golden Retriever", 
+            adoptable: true, 
+            sex: :male,
+            shelter_id: shelter1.id
+            )
 
       PetApplication.create!(
             pet_id: pet1.id,
@@ -57,7 +57,7 @@ RSpec.describe "as a visitor", type: :feature do
       PetApplication.create!(
             pet_id: pet2.id,
             application_id: application1.id
-             )
+            )
 
   visit "/applications/#{application1.id}"
 
@@ -69,10 +69,9 @@ RSpec.describe "as a visitor", type: :feature do
   expect(page).to have_content(application1.description)
   expect(page).to have_content(application1.application_status)
   
-#   expect(page).to have_link(pet1.id)
     end
 
-    it "I can add one or more pets to the applications" do 
+  it "I can add one or more pets to the applications" do 
       application1 = Application.create!(
         name: "Steve", 
         address: "5280 denver st",
@@ -80,7 +79,7 @@ RSpec.describe "as a visitor", type: :feature do
         state: "Colorado", 
         zip: 80219, 
         description: "big yard, loving home", 
-        application_status: "Pending"
+        application_status: "In Progress"
         )
 
       shelter1 = Shelter.create!( 
@@ -137,7 +136,7 @@ RSpec.describe "as a visitor", type: :feature do
         state: "Colorado", 
         zip: 80219, 
         description: "big yard, loving home", 
-        application_status: "Pending"
+        application_status: "In Progress"
         )
 
       shelter1 = Shelter.create!( 
@@ -186,6 +185,69 @@ RSpec.describe "as a visitor", type: :feature do
       click_button "Adopt this Pet"
       expect(current_path).to eq("/applications/#{application1.id}")
       expect(page).to have_content(pet3.name)
+    end
+    it "it can see section to submit app and input description of why they make a good owner" do 
+      application1 = Application.create!(
+        name: "Steve", 
+        address: "5280 denver st",
+        city: "Denver", 
+        state: "Colorado", 
+        zip: 80219, 
+        description: "", 
+        application_status: "In Progress"
+        )
+
+      application2 = Application.create!(
+        name: "Korra", 
+        address: "246 Drury Lane", 
+        city: "Far Way", 
+        state: "Wyoming", 
+        zip: 80299, 
+        description: "looking for a new dog",
+        application_status: "Accepted"
+        )
+
+      shelter1 = Shelter.create!( 
+        name: "Adopt a paw", 
+        address: "123 Paw Ave",
+        city: "Denver",
+        state: "Colorado",
+        zip: 80219 
+        )
+
+      pet1 = Pet.create!(
+        image: "string",
+        name:"Spot",
+        approximate_age: 5, 
+        description: "Rotweiler", 
+        adoptable: true, 
+        sex: :female,
+        shelter_id: shelter1.id
+        )
+
+      pet2 = Pet.create!(
+        image:"string", 
+        name: "Buddy", 
+        approximate_age: 8, 
+        description: "Golden Retriever", 
+        adoptable: true, 
+        sex: :male,
+        shelter_id: shelter1.id
+        )
+
+      PetApplication.create!(pet_id: pet1.id, application_id: application1.id)
+      PetApplication.create!(pet_id: pet2.id, application_id: application1.id)
+
+      visit "/applications/#{application1.id}"
+
+      fill_in "Describe", with: "big yard, loving home"
+
+      click_button "Submit Application"
+    
+      expect(current_path).to eq("/applications/#{application1.id}")
+      expect(page).to have_content("big yard, loving home")
+      expect(page).to have_content("Pending")
+      expect(page).to_not have_field("Pet Search")
     end
   end
 end
