@@ -10,7 +10,7 @@ RSpec.describe "as a visitor", type: :feature do
             state: "Colorado", 
             zip: 80219, 
             description: "big yard, loving home", 
-            application_status: "Pending"
+            application_status: "In Progress"
             )
       application2 = Application.create!(
             name: "Korra", 
@@ -69,7 +69,6 @@ RSpec.describe "as a visitor", type: :feature do
   expect(page).to have_content(application1.description)
   expect(page).to have_content(application1.application_status)
   
-#   expect(page).to have_link(pet1.id)
     end
 
   it "I can add one or more pets to the applications" do 
@@ -80,7 +79,7 @@ RSpec.describe "as a visitor", type: :feature do
         state: "Colorado", 
         zip: 80219, 
         description: "big yard, loving home", 
-        application_status: "Pending"
+        application_status: "In Progress"
         )
 
       shelter1 = Shelter.create!( 
@@ -137,7 +136,7 @@ RSpec.describe "as a visitor", type: :feature do
         state: "Colorado", 
         zip: 80219, 
         description: "big yard, loving home", 
-        application_status: "Pending"
+        application_status: "In Progress"
         )
 
       shelter1 = Shelter.create!( 
