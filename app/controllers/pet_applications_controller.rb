@@ -9,5 +9,5 @@ class PetApplicationsController < ApplicationController
 
     redirect_to "/applications/#{app.id}"
   end
-
+# require 'pry'; binding.pry
 end
