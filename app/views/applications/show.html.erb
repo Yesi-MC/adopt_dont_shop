@@ -8,16 +8,28 @@
  <%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
  <% end %></p>
 
+<% if @application.application_status == "In Progress" %>
 <h2> Search for Pets to adopt <h2>
 <%= form_tag "/applications/#{@application.id}", method: :get do %>
   <%= label_tag "Pet Search" %>
   <%= text_field_tag "Pet Search"%> 
 
   <%= submit_tag 'Submit' %>
+   <% else %>
+  <% end %>
 <% end %>
 
 <%  if @pet != nil %>
-  <%=  @pet.name  %>
+  <h4> Pet Name: <%=  link_to "#{@pet.name}" , "/pets/#{@pet.id}" %></h4>
   <%= button_to "Adopt this Pet", "/applications/#{@application.id}/pets/#{@pet.id}", method: :post, id: "adopt" %><br>
   <% else %>
 <% end %>
+
+<h3> Submit Application </h3>
+  <%= form_tag "/applications/#{@application.id}", method: :patch do %> 
+  <%= label_tag "Describe why you would make a good owner" %>
+  <%= text_field_tag "Describe"%> 
+
+  <%= submit_tag 'Submit Application' %>
+<% end %>
+
