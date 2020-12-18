@@ -278,41 +278,9 @@ RSpec.describe "as a visitor", type: :feature do
         zip: 80219 
         )
 
-      pet1 = Pet.create!(
-        image: "string",
-        name:"Spot",
-        approximate_age: 5, 
-        description: "Rotweiler", 
-        adoptable: true, 
-        sex: :female,
-        shelter_id: shelter1.id
-        )
-
-      pet2 = Pet.create!(
-        image:"string", 
-        name: "Buddy", 
-        approximate_age: 8, 
-        description: "Golden Retriever", 
-        adoptable: true, 
-        sex: :male,
-        shelter_id: shelter1.id
-        )
-
-      PetApplication.create!(pet_id: pet1.id, application_id: application1.id)
-      PetApplication.create!(pet_id: pet2.id, application_id: application1.id)
-
       visit "/applications/#{application1.id}"
 
-      click_button "Submit Application"
-   save_and_open_page
       expect(page).to have_content("Must select pets")
     end
-
-#     No Pets on an Application
-
-# As a visitor
-# When I visit an application's show page
-# And I have not added any pets to the application
-# Then I do not see a section to submit my application
   end
 end
