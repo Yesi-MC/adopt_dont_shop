@@ -249,5 +249,70 @@ RSpec.describe "as a visitor", type: :feature do
       expect(page).to have_content("Pending")
       expect(page).to_not have_field("Pet Search")
     end
+    it "if pets have not been added then application cannot be submitted" do 
+      application1 = Application.create!(
+        name: "Steve", 
+        address: "5280 denver st",
+        city: "Denver", 
+        state: "Colorado", 
+        zip: 80219, 
+        description: "", 
+        application_status: "In Progress"
+        )
+
+      application2 = Application.create!(
+        name: "Korra", 
+        address: "246 Drury Lane", 
+        city: "Far Way", 
+        state: "Wyoming", 
+        zip: 80299, 
+        description: "looking for a new dog",
+        application_status: "Accepted"
+        )
+
+      shelter1 = Shelter.create!( 
+        name: "Adopt a paw", 
+        address: "123 Paw Ave",
+        city: "Denver",
+        state: "Colorado",
+        zip: 80219 
+        )
+
+      pet1 = Pet.create!(
+        image: "string",
+        name:"Spot",
+        approximate_age: 5, 
+        description: "Rotweiler", 
+        adoptable: true, 
+        sex: :female,
+        shelter_id: shelter1.id
+        )
+
+      pet2 = Pet.create!(
+        image:"string", 
+        name: "Buddy", 
+        approximate_age: 8, 
+        description: "Golden Retriever", 
+        adoptable: true, 
+        sex: :male,
+        shelter_id: shelter1.id
+        )
+
+      PetApplication.create!(pet_id: pet1.id, application_id: application1.id)
+      PetApplication.create!(pet_id: pet2.id, application_id: application1.id)
+
+      visit "/applications/#{application1.id}"
+
+      click_button "Submit Application"
+   save_and_open_page
+      expect(page).to have_content("Must select pets")
+    end
+
+#     No Pets on an Application
+
+# As a visitor
+# When I visit an application's show page
+# And I have not added any pets to the application
+# Then I do not see a section to submit my application
   end
 end
