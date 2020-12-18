@@ -1,10 +1,5 @@
 class ApplicationsController < ApplicationController
-  def index 
-    @applications = Application.all 
-  end
-
   def show 
-    # require 'pry'; binding.pry
     @application = Application.find(params[:id])
     if params["Pet Search"]
       @pet = Pet.find_by(name: params["Pet Search"])
@@ -37,7 +32,6 @@ class ApplicationsController < ApplicationController
   def update 
     @application = Application.find(params[:id])
     @application.update({description: params[:Describe], application_status: "Pending"})
-
     @application.save 
     redirect_to "/applications/#{@application.id}"
   end

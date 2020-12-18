@@ -26,10 +26,14 @@
 <% end %>
 
 <h3> Submit Application </h3>
+  <% if @application.pets == [] %>
+<h4>Must select pets</h4>
+ <% else %>
   <%= form_tag "/applications/#{@application.id}", method: :patch do %> 
   <%= label_tag "Describe why you would make a good owner" %>
   <%= text_field_tag "Describe"%> 
 
   <%= submit_tag 'Submit Application' %>
+  <% end %>
 <% end %>
 

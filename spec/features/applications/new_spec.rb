@@ -11,8 +11,6 @@ RSpec.describe "As a visitor" do
       fill_in "City", with: "Denver"
       fill_in "State", with: "Colorado"
       fill_in "Zip", with: "80204"
-      # fill_in "Description", with: "I love pets"
-      # fill_in "Application Status", with: "In Progress"
 
       click_button "Submit"
   
@@ -27,18 +25,10 @@ RSpec.describe "As a visitor" do
       fill_in "City", with: "Denver"
       fill_in "State", with: "Colorado"
       fill_in "Zip", with: "80204"
-      # fill_in "Description", with: "I love pets"
 
       click_button "Submit"
    
       expect(page).to have_content("Please fill in all fields")
     end
-  #   click_n "submit"
-
-  #   within ("#new-application") do 
-  #     expect(page).to have_button('Submit')
-  # end 
-  #   within ("#flash-notice") do 
-  #   expect(page).to have_content("Please")
   end 
 end

@@ -1,6 +1,5 @@
 class PetApplicationsController < ApplicationController
   def create 
-    # require 'pry'; binding.pry
     pet = Pet.find(params[:pet_id])
     app = Application.find(params[:app_id])
 
@@ -9,5 +8,4 @@ class PetApplicationsController < ApplicationController
 
     redirect_to "/applications/#{app.id}"
   end
-
 end
