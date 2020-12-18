@@ -12,6 +12,7 @@ RSpec.describe "as a visitor", type: :feature do
             description: "big yard, loving home", 
             application_status: "In Progress"
             )
+            
       application2 = Application.create!(
             name: "Korra", 
             address: "246 Drury Lane", 
@@ -59,18 +60,16 @@ RSpec.describe "as a visitor", type: :feature do
             application_id: application1.id
             )
 
-  visit "/applications/#{application1.id}"
+      visit "/applications/#{application1.id}"
 
-  expect(page).to have_content(application1.name)
-  expect(page).to have_content(application1.address)
-  expect(page).to have_content(application1.city)
-  expect(page).to have_content(application1.state)
-  expect(page).to have_content(application1.zip)
-  expect(page).to have_content(application1.description)
-  expect(page).to have_content(application1.application_status)
-  
-    end
-
+      expect(page).to have_content(application1.name)
+      expect(page).to have_content(application1.address)
+      expect(page).to have_content(application1.city)
+      expect(page).to have_content(application1.state)
+      expect(page).to have_content(application1.zip)
+      expect(page).to have_content(application1.description)
+      expect(page).to have_content(application1.application_status) 
+  end
   it "I can add one or more pets to the applications" do 
       application1 = Application.create!(
         name: "Steve", 
