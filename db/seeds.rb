@@ -18,9 +18,8 @@ Application.destroy_all
         zip: 80219 
         )
 
-
   pet1 = Pet.create!(
-        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
+        image: "https://i.pinimg.com/originals/59/f5/2f/59f52f43a4abd0b0736609142c9c77a1.jpg",
         name:"Spot",
         approximate_age: 5, 
         description: "Rotweiler", 
@@ -30,7 +29,7 @@ Application.destroy_all
         )
 
   pet2 = Pet.create!(
-        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg", 
+        image: " https://i.pinimg.com/originals/53/71/17/5371173b2f070d7729e27808a52201fa.jpg", 
         name: "Buddy", 
         approximate_age: 8, 
         description: "Golden Retriever", 
@@ -40,7 +39,7 @@ Application.destroy_all
         )
 
   pet2 = Pet.create!(
-        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
+        image: "https://i.pinimg.com/originals/fe/48/fb/fe48fbeb1a3bf62bf44c10882611017a.jpg",
         name: "Courage", 
         approximate_age: 9,
         description: "Pink Beagle", 
@@ -50,7 +49,7 @@ Application.destroy_all
         )
 
   pet3 = Pet.create!(
-        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
+        image: "https://assets.cosplaycentral.com/Appa-Doggo-Cosplay.jpg/BROK/resize/1200x1200%3E/format/jpg/quality/70/Appa-Doggo-Cosplay.jpg",
         name: "Appa", 
         approximate_age: 3,
         description: "Poodle", 
@@ -60,7 +59,7 @@ Application.destroy_all
         )
 
   pet4 = Pet.create!(
-        image: "https://www.dogtime.com/assets/uploads/2011/01/file_22988_labrador-retriever.jpg",
+        image: "https://doxiequeen1.files.wordpress.com/2013/07/dsc_0996.jpg",
         name: "Momo", 
         approximate_age: 2,
         description: "Corgi", 
@@ -70,7 +69,7 @@ Application.destroy_all
         )
 
   pet5 = Pet.create!(
-        image: "https://media.angieslist.com/s3fs-public/styles/widescreen_large/public/parakeet.jpeg?itok=2pMpm55J",
+        image: "https://vittlesvault.com/wp-content/uploads/2017/10/DIY-Scooby-Doo-Dog-Halloween-Costume.jpg",
         name: "Scooby", 
         approximate_age: 6,
         description: "Great Dane", 
